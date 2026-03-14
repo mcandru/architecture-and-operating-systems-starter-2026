@@ -26,6 +26,7 @@ You will be provided with a **starter template** that includes the basic input l
 - You must **not** use `shell=True` when calling `subprocess.run()` or `subprocess.Popen()`. Your shell must parse commands and pass arguments as a list — not delegate parsing to a system shell like Bash.
 - **Built-in commands** (e.g. `cat`, `head`, `wc`, `echo`, `cd`) must be implemented using your own Python code. Do not simply call the equivalent external programs via `subprocess`. The purpose of these built-ins is for you to demonstrate your understanding of how these operations work at the programming level.
 - You must **not** install any external dependencies beyond those already included in the starter template (`psutil` and `requests`). You are free to use any module from the Python standard library.
+- Your shell must run on **Linux**. This is the target platform and the environment in which it will be tested. You are welcome to additionally support other operating systems (e.g. macOS, Windows), but Linux compatibility is required.
 
 ## Specification
 
@@ -71,12 +72,13 @@ Use the `psutil` library to access system information. In your report, explain t
 
 To demonstrate your understanding of threads and concurrency, implement a built-in command called **`download`** that downloads files from the internet using a **producer-consumer** pattern. This command should:
 
-- Maintain a **shared queue** of URLs to download (using `queue.Queue`)
+- Maintain a **shared queue** of URLs to download
 - Run a **pool of worker threads** that consume URLs from the queue and download them
 - Use a **thread-safe counter** (protected by a lock) to track the number of completed downloads
 - **`download <file>`:** read a text file containing URLs (one per line), add them to the download queue, and immediately begin downloading with 3 worker threads. A sample file `test_urls.txt` is provided for testing.
 - **`download <file> -w <number>`:** same as above, but with a custom number of worker threads (e.g. `download urls.txt -w 5`)
 - **`download --status`:** show the current state of the download queue and workers (how many items queued, how many workers active, completed count)
+- Downloaded files should be saved to a **`downloads`** folder in the current working directory. If the folder does not exist, your shell should create it automatically.
 - Handle errors gracefully. An invalid URL or network timeout should not crash the worker thread or the shell
 
 The worker threads should run in the background, allowing the user to continue using the shell and check progress with `download --status`.
@@ -98,7 +100,7 @@ This is an opportunity for you to go beyond the specification and add one or mor
 
 ### Demonstration
 
-You will give a live demonstration of your shell on the **week of 20th April** showing your shell executing commands, working with files, downloading files concurrently, and displaying system information. Be prepared to answer questions about your implementation to demonstrate understanding of your work. **You must demo your project to receive a grade for it.**
+You will give a live demonstration of your shell on the **week of 27th April** showing your shell executing commands, working with files, downloading files concurrently, and displaying system information. Be prepared to answer questions about your implementation to demonstrate understanding of your work. **You must demo your project to receive a grade for it.**
 
 ### Report
 
@@ -114,6 +116,8 @@ Write a technical report of approximately **1,000–1,500 words** covering:
 Write for a technical audience who has already taken this course.
 
 ## Submission
+
+The deadline for submission is **Sunday 3rd May at 23:59**. For each day that your assignment is submitted late, 5% will be deducted. Assignments submitted more than 7 days late will not be accepted. Academic integrity guidance for this project is available [on the course website](https://mcandru.github.io/architecture-and-operating-systems/academic-integrity).
 
 You will be required to submit the following by **Sunday 3rd May**:
 

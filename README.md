@@ -1,4 +1,4 @@
-# pysh — Python Shell
+# pysh - Python Shell
 
 A minimal shell built in Python for the Architecture and Operating Systems module.
 
